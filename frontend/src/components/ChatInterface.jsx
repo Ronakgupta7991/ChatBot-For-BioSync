@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Message from './Message';
-import VitalSigns from './VitalSigns';
-import { useChat } from '../hooks/useChat';
+import Message from './Message'; // Ensure correct path
+import VitalSigns from './VitalSigns'; // Ensure correct path
+import { useChat } from '../hooks/useChat'; // Ensure correct path
 
 const ChatInterface = () => {
     const [input, setInput] = useState('');
@@ -9,7 +9,7 @@ const ChatInterface = () => {
     const [vitalSigns, setVitalSigns] = useState({
         heart_rate: 75,
         spo2: 98,
-        temperature: 36.8
+        temperature: 36.8,
     });
 
     const handleSend = async () => {
@@ -20,19 +20,12 @@ const ChatInterface = () => {
 
     return (
         <div className="chat-container">
-            <VitalSigns 
-                vitalSigns={vitalSigns} 
-                onChange={setVitalSigns} 
-            />
+            <VitalSigns vitalSigns={vitalSigns} onChange={setVitalSigns} />
             <div className="messages">
                 {messages.map((msg, idx) => (
                     <Message key={idx} message={msg} />
                 ))}
-                {isLoading && (
-                    <div className="typing-indicator">
-                        Bot is typing...
-                    </div>
-                )}
+                {isLoading && <div className="typing-indicator">Bot is typing...</div>}
             </div>
             <div className="input-area">
                 <input
@@ -42,10 +35,7 @@ const ChatInterface = () => {
                     placeholder="Type your health query..."
                     disabled={isLoading}
                 />
-                <button 
-                    onClick={handleSend}
-                    disabled={isLoading}
-                >
+                <button onClick={handleSend} disabled={isLoading}>
                     Send
                 </button>
             </div>
